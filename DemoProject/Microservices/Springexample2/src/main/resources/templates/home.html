@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<style>
+btn-group .button {
+  background-color: #008CBA;
+  border: 1px solid blue;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  cursor: pointer;
+  width: 250px;
+  display: block;
+}
+
+.btn-group .button:not(:last-child) {
+  border-bottom: none; 
+}
+
+.btn-group .button:hover {
+  background-color: #e7e7e7;
+}
+body{
+font-size:25px;
+font:13px/20px;
+color: black;
+background:#db7093;
+background-image:url(../images/img2.jpg);
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-size:cover;
+padding:100px;
+margin:100px;
+ 
+ }
+ th,td{font-size:20px;
+ }
+ 
+ 
+ </style>
+<body>
+<table border="1"  >
+			<thead>
+				<tr>
+					<th>
+					
+
+
+
+						Employee First Name
+					</th>
+					<th>
+
+							Employee Last Name
+					</th>
+					<th>
+
+							Employee Email
+					</th>
+				
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${listEmployees}">
+					<td th:text="${employee.firstName}"></td>
+					<td th:text="${employee.lastName}"></td>
+					<td th:text="${employee.email}"></td>
+					<td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" >Update</a>
+					    <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" >Delete</a>
+					</td>
+					
+				</tr>
+			</tbody>
+		</table>
+		<a th:href=@{/newempform}><input type="button" value="add Employees"></a>
+</body>
+</html>
